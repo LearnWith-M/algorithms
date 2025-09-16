@@ -39,10 +39,35 @@ public class ThirdLargestElementProblem {
         System.out.println("Third Largest element : " + thirdLargest);
     }
 
+    //    Solution 3: One pass
+    public static void findThirdLargeElementOnePass(int[] arr) {
+        int arrLen = arr.length;
+
+        int largest = -1;
+        int secondLargest = -1;
+        int thirdLargest = -1;
+
+        for (int i = 0; i < arrLen; i++) {
+            if (arr[i] > largest) {
+                thirdLargest = secondLargest;
+                secondLargest = largest;
+                largest = arr[i];
+            } else if (arr[i] > secondLargest) {
+                thirdLargest = secondLargest;
+                secondLargest = arr[i];
+            } else if (arr[i] > thirdLargest) {
+                thirdLargest = arr[i];
+            }
+        }
+
+        System.out.println("Third Largest element : " + thirdLargest);
+    }
+
     public static void main(String[] args) {
         int[] arr = new int[]{1, 14, 2, 16, 10, 20};
         findThirdLargeElementBySort(arr);
         findThirdLargeElementBySeparateLoops(arr);
+        findThirdLargeElementOnePass(arr);
     }
 
 
