@@ -14,11 +14,30 @@ public class ReverseArrayProblem {
             j++;
         }
 
-        System.out.print("Reversed array : " + Arrays.toString(reversedArr));
+        System.out.println("Reversed array : " + Arrays.toString(reversedArr));
+    }
+
+    //    Solution 2: Two pointers
+    public static void reverseArrayWithTwoPointers(int[] arr) {
+        int arrLen = arr.length;
+        int left = 0;
+        int right = arrLen - 1;
+
+        while (left < right) {
+            int temp = arr[right];
+            arr[right] = arr[left];
+            arr[left] = temp;
+            left++;
+            right--;
+        }
+
+        System.out.println("Reversed array : " + Arrays.toString(arr));
     }
 
     public static void main(String[] args) {
         int[] arr = new int[]{1, 4, 3, 2, 6, 5};
         reverseArrayUsingTempArray(arr);
+
+        reverseArrayWithTwoPointers(arr);
     }
 }
