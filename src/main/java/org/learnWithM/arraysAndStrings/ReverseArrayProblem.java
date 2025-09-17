@@ -34,10 +34,25 @@ public class ReverseArrayProblem {
         System.out.println("Reversed array : " + Arrays.toString(arr));
     }
 
+    //    Solution 3: Swap elements
+    public static void reverseArraySwapElements(int[] arr) {
+        int arrLen = arr.length;
+
+        for (int i = 0; i < arrLen / 2; i++) {
+            int temp = arr[i];
+            arr[i] = arr[arrLen - 1 - i];
+            arr[arrLen - 1 - i] = temp;
+        }
+
+        System.out.println("Reversed array : " + Arrays.toString(arr));
+    }
+
     public static void main(String[] args) {
         int[] arr = new int[]{1, 4, 3, 2, 6, 5};
         reverseArrayUsingTempArray(arr);
-
         reverseArrayWithTwoPointers(arr);
+
+        int[] arrForSwap = new int[]{1, 4, 3, 2, 6, 5};
+        reverseArraySwapElements(arrForSwap);
     }
 }
