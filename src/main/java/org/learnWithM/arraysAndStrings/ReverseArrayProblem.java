@@ -1,6 +1,8 @@
 package org.learnWithM.arraysAndStrings;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class ReverseArrayProblem {
 
@@ -14,7 +16,7 @@ public class ReverseArrayProblem {
             j++;
         }
 
-        System.out.println("Reversed array : " + Arrays.toString(reversedArr));
+        System.out.println("Reversed array(temp array method) : " + Arrays.toString(reversedArr));
     }
 
     //    Solution 2: Two pointers
@@ -31,7 +33,7 @@ public class ReverseArrayProblem {
             right--;
         }
 
-        System.out.println("Reversed array : " + Arrays.toString(arr));
+        System.out.println("Reversed array(two pointer method) : " + Arrays.toString(arr));
     }
 
     //    Solution 3: Swap elements
@@ -44,7 +46,14 @@ public class ReverseArrayProblem {
             arr[arrLen - 1 - i] = temp;
         }
 
-        System.out.println("Reversed array : " + Arrays.toString(arr));
+        System.out.println("Reversed array(swap element method) : " + Arrays.toString(arr));
+    }
+
+    //    Solution 4: Inbuilt methods
+    public static void reverseArrayInbuilt(List<Integer> arr) {
+        Collections.reverse(arr);
+
+        System.out.println("Reversed array(inbuilt methods) : " + arr.toString());
     }
 
     public static void main(String[] args) {
@@ -54,5 +63,8 @@ public class ReverseArrayProblem {
 
         int[] arrForSwap = new int[]{1, 4, 3, 2, 6, 5};
         reverseArraySwapElements(arrForSwap);
+
+        List<Integer> arrList = Arrays.asList(1, 4, 3, 2, 6, 5);
+        reverseArrayInbuilt(arrList);
     }
 }
