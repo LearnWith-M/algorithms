@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class RotateArrayByDProblem {
 
-    //    Solution 1. Rotate array one by one
+    //    Solution 1: Rotate array one by one
     public static void rotateArrayIterative(int[] arr, int d) {
         int arrLen = arr.length;
         for (int i = 0; i < d; i++) {
@@ -19,9 +19,28 @@ public class RotateArrayByDProblem {
         System.out.println("Rotated array :" + Arrays.toString(arr));
     }
 
+    //    Solution 2: Rotate array using temp array
+    public static void rotateArrayTempCreate(int[] arr, int d) {
+        int arrLen = arr.length;
+        int[] temp = new int[arrLen];
+        int start = d % arrLen;
+
+        for (int i = start; i < arrLen; i++) {
+            temp[i - start] = arr[i];
+        }
+
+        for (int j = 0; j < start; j++) {
+            temp[start + j] = arr[j];
+        }
+
+        System.out.println("Rotated array : " + Arrays.toString(temp));
+    }
 
     public static void main(String[] args) {
         int[] arr = new int[]{1, 2, 3, 4, 5, 6};
         rotateArrayIterative(arr, 3);
+
+        int[] arr2 = new int[]{1, 2, 3, 4, 5, 6};
+        rotateArrayTempCreate(arr2, 3);
     }
 }
